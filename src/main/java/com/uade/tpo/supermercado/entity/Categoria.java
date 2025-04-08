@@ -2,12 +2,10 @@ package com.uade.tpo.supermercado.entity;
 
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,12 +31,17 @@ public class Categoria {
     @OneToMany(mappedBy = "parentCategoria",cascade = CascadeType.ALL)
     private List<Categoria> subcategorias;
 
-
-
-
     public Categoria(){
 
     }
+
+    public Categoria(String nombre, Categoria parentCategoria, List<Categoria> subcategorias) {
+        this.nombre = nombre;
+        this.parentCategoria = parentCategoria;
+        this.subcategorias = subcategorias;
+    }
+    
+
 
 
 
